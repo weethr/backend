@@ -2,10 +2,18 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>Autocomplete</servlet-name>
-        <servlet-class>ru.koluch.weethr.Autocomplete</servlet-class>
+        <servlet-class>ru.koluch.weethr.AutocompleteServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Autocomplete</servlet-name>
         <url-pattern>/cities</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Secrets</servlet-name>
+        <servlet-class>ru.koluch.weethr.SecretsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Secrets</servlet-name>
+        <url-pattern>/secrets</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -22,18 +22,15 @@ import kotlin.collections.map
  *
  * Created: 31.01.2016 00:03
  */
-class Autocomplete: Servlet() {
+class AutocompleteServlet : Servlet() {
 
     override fun doGet(req: HttpServletRequest, resp: HttpServletResponse) {
         super.doGet(req, resp)
-
-        val googleApiKey = ""
-        val owmApiKey = ""
-
         val gson = Gson()
 
         if(req.parameterMap.containsKey("q")) {
             val q = req.getParameter("q")
+            val googleApiKey: String = env.getSecret(SECRET_GOOGLE_API_KEY) ?: throw RuntimeException("Google api key is not defined")
 
             val url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + URLEncoder.encode(q, "UTF-8") + "&key=" +URLEncoder.encode(googleApiKey, "UTF-8") + "&language=en&types=(cities)";
             val dataJson: JsonObject = gson.fromJson(fetch(url))

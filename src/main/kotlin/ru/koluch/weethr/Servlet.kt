@@ -2,6 +2,7 @@ package ru.koluch.wordlist
 
 import com.google.appengine.api.utils.SystemProperty
 import java.io.BufferedReader
+import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.net.URL
 import java.util.*
