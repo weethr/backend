@@ -24,6 +24,8 @@ import kotlin.collections.map
 class AutocompleteServlet : Servlet() {
 
     override fun doGet(req: HttpServletRequest, resp: HttpServletResponse) {
+        super.doGet(req, resp)
+        resp.characterEncoding = "UTF-8"
         val gson = Gson()
 
         if(req.parameterMap.containsKey("q")) {
@@ -33,8 +35,10 @@ class AutocompleteServlet : Servlet() {
             val url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + URLEncoder.encode(q, "UTF-8") + "&key=" +URLEncoder.encode(googleApiKey, "UTF-8") + "&language=en&types=(cities)";
             val dataJson: JsonObject = gson.fromJson(fetch(url))
             if(dataJson.get("status").string == "OK") {
-                val result: List<String> = dataJson.get("predictions").array.map { prediction ->
-                    prediction.get("terms").array[0].get("value").string
+                val result: List<JsonObject> = dataJson.get("predictions").array.map { prediction ->
+                    jsonObject(
+                        "city" to prediction.get("terms").array[0].get("value").string
+                    )
                 }
                 resp.setStatus(SC_OK)
                 resp.setHeader("Content-Type", "application/json")

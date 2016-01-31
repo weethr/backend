@@ -22,6 +22,9 @@ import kotlin.collections.map
 class WeatherServlet : Servlet() {
 
     override fun doGet(req: HttpServletRequest, resp: HttpServletResponse) {
+        super.doGet(req, resp)
+        resp.characterEncoding = "UTF-8"
+
         if(!req.parameterMap.containsKey("q")) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'q' is mandatory")
             return
