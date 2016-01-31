@@ -1,4 +1,4 @@
-package ru.koluch.wordlist
+package ru.koluch.weethr
 
 import com.google.appengine.api.utils.SystemProperty
 import java.io.BufferedReader
@@ -85,6 +85,7 @@ open class Servlet : HttpServlet() {
      */
 
     fun fetch(url: String): String {
+        //todo: check response status and throw error if not SC_OK
         val urlObj = URL(url)
         BufferedReader(InputStreamReader(urlObj.openStream())).use {
             return it.readText()

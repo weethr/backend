@@ -2,7 +2,6 @@ package ru.koluch.weethr
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import ru.koluch.wordlist.Servlet
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
@@ -25,7 +24,6 @@ import kotlin.collections.map
 class AutocompleteServlet : Servlet() {
 
     override fun doGet(req: HttpServletRequest, resp: HttpServletResponse) {
-        super.doGet(req, resp)
         val gson = Gson()
 
         if(req.parameterMap.containsKey("q")) {
