@@ -87,7 +87,7 @@ open class Servlet : HttpServlet() {
     fun fetch(url: String): String {
         //todo: check response status and throw error if not SC_OK
         val urlObj = URL(url)
-        BufferedReader(InputStreamReader(urlObj.openStream())).use {
+        BufferedReader(InputStreamReader(urlObj.openStream(), "UTF-8")).use {
             return it.readText()
         }
     }

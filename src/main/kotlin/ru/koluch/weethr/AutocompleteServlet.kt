@@ -41,21 +41,21 @@ class AutocompleteServlet : Servlet() {
                     )
                 }
                 resp.setStatus(SC_OK)
-                resp.setHeader("Content-Type", "application/json")
+                resp.setHeader("Content-Type", "application/json; charset=utf-8")
                 resp.writer.write(gson.toJson(result))
             }
             else if(dataJson.get("status").string == "ZERO_RESULTS") {
                 resp.setStatus(SC_OK)
-                resp.setHeader("Content-Type", "application/json")
+                resp.setHeader("Content-Type", "application/json; charset=utf-8")
                 resp.writer.write(gson.toJson(listOf<String>()))
             }
             else {
-                resp.sendError(SC_INTERNAL_SERVER_ERROR, "Error: " + dataJson.get("error_message").string)
+                throw RuntimeException(dataJson.get("error_message").string)
             }
         }
         else {
             resp.setStatus(SC_OK)
-            resp.setHeader("Content-Type", "application/json")
+            resp.setHeader("Content-Type", "application/json; charset=utf-8")
             resp.writer.write(gson.toJson(listOf<String>()))
         }
     }

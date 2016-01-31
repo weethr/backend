@@ -37,7 +37,7 @@ class WeatherServlet : Servlet() {
 
         val responseText = fetch(url)
         resp.setStatus(HttpServletResponse.SC_OK)
-        resp.setHeader("Content-Type", "application/json")
+        resp.setHeader("Content-Type", "application/json; charset=utf-8")
         resp.writer.write(responseText)
 
     }
