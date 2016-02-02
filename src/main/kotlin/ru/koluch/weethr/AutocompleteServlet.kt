@@ -28,8 +28,8 @@ class AutocompleteServlet : Servlet() {
         resp.characterEncoding = "UTF-8"
         val gson = Gson()
 
-        if(req.parameterMap.containsKey("q")) {
-            val q = req.getParameter("q")
+        val q = req.getParameter("q")
+        if(q != null && q != "") {
             val googleApiKey: String = env.getSecret(SECRET_GOOGLE_API_KEY) ?: throw RuntimeException("Google api key is not defined")
 
             val url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + URLEncoder.encode(q, "UTF-8") + "&key=" +URLEncoder.encode(googleApiKey, "UTF-8") + "&language=en&types=(cities)";
