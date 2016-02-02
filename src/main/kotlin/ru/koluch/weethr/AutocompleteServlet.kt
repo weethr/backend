@@ -37,7 +37,7 @@ class AutocompleteServlet : Servlet() {
             if(dataJson.get("status").string == "OK") {
                 val result: List<JsonObject> = dataJson.get("predictions").array.map { prediction ->
                     jsonObject(
-                        "city" to prediction.get("terms").array[0].get("value").string
+                        "name" to prediction.get("terms").array[0].get("value").string
                     )
                 }
                 resp.setStatus(SC_OK)
