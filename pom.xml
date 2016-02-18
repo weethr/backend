@@ -9,7 +9,7 @@
     <artifactId>backend</artifactId>
 
     <properties>
-        <kotlin.version>1.0.0-beta-4584</kotlin.version>
+        <kotlin.version>1.0.0</kotlin.version>
         <app.id>ru-koluch-weethr-backend</app.id>
         <app.version>1</app.version>
         <appengine.version>1.9.31</appengine.version>
@@ -123,7 +123,7 @@
                     <enableJarClasses>false</enableJarClasses>
                     <version>${app.version}</version>
                     <!-- Comment in the below snippet to bind to all IPs instead of just localhost -->
-                    <address>localhost</address>
+                    <address>192.168.1.185</address>
                     <port>8081</port>
                     <!-- Comment in the below snippet to enable local debugging with a remote debugger
                          like those included with Eclipse or IntelliJ -->
